@@ -50,5 +50,5 @@ func main() {
 
 	// deltaV := 9.82 * 314.5 * math.Log(M0/M)
 	deltaV := 3084. * math.Log(M0/M)
-	fmt.Printf("delta V should be %f (%f%%)\n", deltaV, 100.*deltaV/V)
+	fmt.Printf("# delta V should be %f (%f%%)\n", deltaV, 100.*deltaV/V)
 }
