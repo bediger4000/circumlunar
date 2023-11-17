@@ -1,0 +1,7 @@
+set term png
+set size square
+set term png
+set out "spacestation_orbit.png"
+plot 'earth.outline' with lines title "Earth", \
+'spacestation_orbit.points' using 4:5 with dots title "Space station orbit"
+
