@@ -6,14 +6,16 @@
 Joseph Kaplan, Wernher von Braun, Heinz Haber, Willey Ley, Oscar Schatchter, Fred Whipple,
 edited by Cornelius Ryan, Viking Press, 1952.
 part of a prose expostion,
-and elaboration of von Braun's _The Mars Project_,
-the technical appendix of [Project Mars](),
+and elaboration of von Braun's [The Mars Project](https://en.wikipedia.org/wiki/The_Mars_Project),
+the technical appendix of [Project Mars](https://en.wikipedia.org/wiki/Project_Mars:_A_Technical_Tale),
 
 Von Braun describes a lunar excursion,
 to be undertaken as a way to ease into interplanetary travel,
 and map the landing site for a lunar expedition.
 
-## Vehical Specs
+## Vehicle Specs
+
+![vehicle schematic](lunar_orbiter_35.png)
 
 Unfortunately, von Braun did not see fit to numerically describe
 the circumlunar vehicle as fully as he did the Three Stage Launch vehicle.
@@ -36,17 +38,18 @@ In consistent SI units:
 
 There's a phrase in the book about leaving space station orbit requires "barely 2 minutes" of thrust.
 
-From this, we can back out the propellant consumption of 168,000 kg.
-That's one 120 s burn
-to leave space station orbit, one to circularize the very eccentric
+From this, we can back out a total propellant consumption of 168,000 kg.
+That's one 120 sec burn
+to leave space station orbit, a very similar burn to circularize the eccentric
 cislunar orbit.
 
-Von Braun also gives a &#916;V requirement of 2835 m/s to leave the space station's
-1075-mile orbit, getting into an orbit that whose apogee is just outside the moon's orbit.
+Von Braun also gives a &#916;V requirement of 2835 m/s
+to leave the space station's 1075-mile orbit,
+getting into an orbit whose apogee is just outside the moon's orbit.
 
 From these facts and the [Rocket Equation](),
 we can back out a fully fueled mass of 193652 kg,
-and a dry mass of 25652 kg.
+and a vehicle dry mass of 25652 kg.
 
 ## Orbit Diagram
 
@@ -62,7 +65,7 @@ and refresh my 40-year-old knowledge of orbital mechanics.
 Here's my project plan:
 
 1. Numerically integrate a rocket thrusting for a period.
-Double check that the change in velocity matches
+Double check that the change in velocity matches the Rocket Equation.
    * Wrote a [simulation](csm.go) based on the Apollo Command/Service module,
    since that's very well documented numerically.
 2. Numerically integrate a circular orbit. That is,
@@ -70,15 +73,16 @@ using (vector) **F** = m **A**, where acceleration **A**
 always points to the center of the earth, see if an object with
 tangential velocity of 7069.5 meters/sec ends up in a 1075 mile circular orbit.
    * Wrote a [simulation](ss.go) of Wernher von Braun's polar-orbiting
-   space station from _Across the Space Frontier]_
+   space station from _Across the Space Frontier_
 3. After one orbit, apply an impulsive velocity change,
-determine if **F** = m **A** integration changes to an elliptic orbit.
+determine if **F** = m **A** integration of earth's gravity
+causes the vehicle to change to an elliptic orbit.
    * Wrote a simulation of von Braun's lunar excursion vehicle
    doing a 1000 meter/sec impulsive velocity change,
    along with change in mass from expending that much propellant
 4. Try numeric integration of a [Hohmann transfer orbit]() works.
 This requires two impulsive velocity changes.
-5. Try a "barely 2 minute" continuous thrust and concomitant mass change
+5. See if a "barely 2 minute" continuous thrust and concomitant mass change
 numerically integrates to a big ellipse that takes the vehicle
 out to the radius of the Moon's orbit.
 6. Try to put a 3rd body, the Moon, into the simulation of (5).
