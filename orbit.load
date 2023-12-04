@@ -1,3 +1,7 @@
+set xtics out rotate by -90
+set ytics out
+set xlabel "distance from earth's center, meters"
+set ylabel "distance from earth's center, meters"
 set term png
 set size square
 set term png
