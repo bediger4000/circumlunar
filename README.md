@@ -17,6 +17,12 @@ and map the landing site for a lunar expedition.
 
 ![vehicle schematic](lunar_orbiter_35.png)
 
+Line drawing from _Across the Space Frontier_
+
+![von Braun sketch of vehicle](braun650.jpg)
+
+Von Braun's own sketch, which includes a scale.
+
 Unfortunately, von Braun did not see fit to numerically describe
 the circumlunar vehicle as fully as he did the Three Stage Launch vehicle.
 He does write:
@@ -73,13 +79,20 @@ using (vector) **F** = m **A**, where acceleration **A**
 always points to the center of the earth, see if an object with
 tangential velocity of 7069.5 meters/sec ends up in a 1075 mile circular orbit.
    * Wrote a [simulation](ss.go) of Wernher von Braun's polar-orbiting
-   space station from _Across the Space Frontier_
+   space station from _Across the Space Frontier_, using [symplectic Euler](https://en.wikipedia.org/wiki/Semi-implicit_Euler_method)
+   numerical integration, 0.25 second time steps
+     * orbit height 1730044.745 m (1075 mile), 7012.6 m/s velocity
+     * Numerically integrates a nice, 7258 second circular orbit,
+       orbital radius staying between 8100234 m and 8101993 m
 3. After one orbit, apply an impulsive velocity change,
 determine if **F** = m **A** integration of earth's gravity
 causes the vehicle to change to an elliptic orbit.
    * Wrote a simulation of von Braun's lunar excursion vehicle
-   doing a 1000 meter/sec impulsive velocity change,
-   along with change in mass from expending that much propellant
+   doing a 1000 meter/sec impulsive velocity change, again using symplectic Euler
+   numerical integration.
+     * perigee of 1730044.745 m (1075 mile), 8012.6 m/s velocity after the impulsive &#916;V
+     * [vis viva]() equation works out to an apogee of 1.523x10<sup>7</sup> m,
+       numerically integrated orbit hits that exactly.
 4. Try numeric integration of a [Hohmann transfer orbit]() works.
 This requires two impulsive velocity changes.
 5. See if a "barely 2 minute" continuous thrust and concomitant mass change
