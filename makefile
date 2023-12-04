@@ -1,16 +1,24 @@
-all: csm ss earthoutline
+all: spacestation_orbit.png impulsive_orbit.png
 csm: csm.go
 	go build csm.go
 ss: ss.go
 	go build ss.go
+impulse1: impulse1.go
+	go build impulse1.go
 drawearth: drawearth.go
 	go build drawearth.go
 
-earth.ouline: drawearth
+earth.outline: drawearth
 	./drawearth > earth.outline
 
 spacestation_orbit.points: ss
 	./ss > spacestation_orbit.points
 
-spacestation_orbit.png: earth.ouline spacestation_orbit.points orbit.load
+spacestation_orbit.png: earth.outline spacestation_orbit.points orbit.load
 	gnuplot < orbit.load
+
+impulsive1.dat: impulse1
+	./impulse1 > impulsive1.dat
+
+impulsive_orbit.png: earth.outline impulsive1.dat impulse1.load
+	gnuplot < impulse1.load
