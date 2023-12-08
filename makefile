@@ -1,4 +1,9 @@
-all: spacestation_orbit.png impulsive_orbit.png nonimpulsive_orbit.png
+all: spacestation_orbit.png impulsive_orbit.png nonimpulsive_orbit.png \
+	orbits_overlay.png
+
+clean:
+	-rm -rf spacestation_orbit.png impulsive_orbit.png \
+		nonimpulsive_orbit.png orbits_overlay.png
 csm: csm.go
 	go build csm.go
 ss: ss.go
@@ -30,3 +35,6 @@ nonimpulsive1.dat: nonimpulsive1
 
 nonimpulsive_orbit.png: earth.outline nonimpulsive1.dat nonimpulse1.load
 	gnuplot < nonimpulse1.load
+
+orbits_overlay.png: earth.outline nonimpulsive1.dat impulsive1.dat overlay.load
+	gnuplot < overlay.load
