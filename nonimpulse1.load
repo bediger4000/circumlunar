@@ -1,0 +1,11 @@
+set xtics out rotate by -90
+set ytics out
+set xlabel "distance from earth's center, meters"
+set ylabel "distance from earth's center, meters"
+set term png
+set size square
+set term png size 1280,1280
+set out "nonimpulsive_orbit.png"
+plot 'earth.outline' with lines title "Earth", \
+'nonimpulsive1.dat' using 4:5 with dots title "nonimpulsive maneuver orbit"
+
