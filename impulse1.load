@@ -6,6 +6,8 @@ set term png
 set size square
 set term png size 1280,1280
 set out "impulsive_orbit.png"
+set xrange [-2e7:1e7]
+set yrange [-1.5e7:1.5e7]
 plot 'earth.outline' with lines title "Earth", \
 'impulsive1.dat' using 4:5 with dots title "impulsive maneuver orbit"
 

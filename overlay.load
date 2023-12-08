@@ -2,12 +2,14 @@ set xtics out rotate by -90
 set ytics out
 set xlabel "distance from earth's center, meters"
 set ylabel "distance from earth's center, meters"
+set style line 1  linecolor rgb '#ff0000'
+set style line 2  linecolor rgb '#00ff00'
 set term png
 set size square
 set term png size 1280,1280
+set out "orbits_overlay.png"
 set xrange [-2e7:1e7]
 set yrange [-1.5e7:1.5e7]
-set out "nonimpulsive_orbit.png"
 plot 'earth.outline' with lines title "Earth", \
-'nonimpulsive1.dat' using 4:5 with dots title "nonimpulsive maneuver orbit"
-
+'impulsive1.dat' using 4:5 with lines title "impulsive maneuver orbit" linestyle 1, \
+'nonimpulsive1.dat' using 4:5 with lines title "nonimpulsive maneuver orbit 1" linestyle 2 

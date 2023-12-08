@@ -4,7 +4,7 @@ set xlabel "distance from earth's center, meters"
 set ylabel "distance from earth's center, meters"
 set term png
 set size square
-set term png
+set term png size 800,800
 set out "spacestation_orbit.png"
 plot 'earth.outline' with lines title "Earth", \
 'spacestation_orbit.points' using 4:5 with dots title "Space station orbit"
