@@ -61,6 +61,7 @@ func main() {
 
 	}
 
+	fmt.Println("\n# end single circular orbit")
 	fmt.Println("# 1000. m/s impulsive velocity change")
 	fmt.Printf("# t\tVx\tVy\tx\ty\tvv/vis-viva\n")
 	Vy += 1000.0 // impulsive delta-V of 1 Km/s
@@ -76,7 +77,7 @@ func main() {
 
 	GMa = GM1 / a
 
-	for ; t <= 98900.0; t += dt {
+	for ; t <= 14000.0; t += dt {
 
 		r2 := X*X + Y*Y
 		r = math.Sqrt(r2)
