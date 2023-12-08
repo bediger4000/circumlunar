@@ -38,7 +38,7 @@ relevant facts for the Third Stage:
 
 In consistent SI units:
 
-* Thrust 1.958E6 Kg m/(s<sup>2</sup>
+* Thrust 1.958E6 Kg m/s<sup>2</sup>
 * Propellant consumption 700 kg/s
 * Exhaust velocity 2805 m/s
 
@@ -91,11 +91,19 @@ causes the vehicle to change to an elliptic orbit.
    doing a 1000 meter/sec impulsive velocity change, again using symplectic Euler
    numerical integration.
      * perigee of 1730044.745 m (1075 mile), 8012.6 m/s velocity after the impulsive &#916;V
-     * [vis viva]() equation works out to an apogee of 1.523x10<sup>7</sup> m,
+     * [vis viva](https://en.wikipedia.org/wiki/Vis-viva_equation) equation works out to an apogee of 1.523x10<sup>7</sup> m,
        numerically integrated orbit hits that exactly.
-4. Try numeric integration of a [Hohmann transfer orbit]() works.
+4. After one orbit, apply a non-impulsive velocity change,
+determine if **F** = m **A** integration of earth's gravity
+causes the vehicle to change to an elliptic orbit.
+Use the same 1000 meter/sec &#916;V as in (3).
+5. Try numeric integration of a [Hohmann transfer orbit]() works.
 This requires two impulsive velocity changes.
-5. See if a "barely 2 minute" continuous thrust and concomitant mass change
+6. See if a "barely 2 minute" continuous thrust and concomitant mass change
 numerically integrates to a big ellipse that takes the vehicle
 out to the radius of the Moon's orbit.
-6. Try to put a 3rd body, the Moon, into the simulation of (5).
+7. Try to put a 3rd body, the Moon, into the simulation of (5).
+
+## References
+
+* [Symplectic Euler method](https://www.mgaillard.fr/2021/07/11/euler-integration.html)
