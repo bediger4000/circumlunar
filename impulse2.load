@@ -1,0 +1,13 @@
+set xtics out rotate by -90
+set ytics out
+set xlabel "distance from earth's center, meters"
+set ylabel "distance from earth's center, meters"
+#set term png
+#set size square
+#set term png size 1280,1280
+#set out "impulsive_orbit.png"
+set xrange [-2e7:2e7]
+set yrange [-2.0e7:2.0e7]
+plot 'earth.outline' with lines title "Earth", \
+'impulsive2.dat' using 4:5 with dots title "transfer orbit"
+
