@@ -107,3 +107,4 @@ out to the radius of the Moon's orbit.
 ## References
 
 * [Symplectic Euler method](https://www.mgaillard.fr/2021/07/11/euler-integration.html)
+* [Earth and Moon facts](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html)
