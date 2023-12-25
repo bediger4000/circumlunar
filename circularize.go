@@ -156,7 +156,7 @@ func main() {
 	fmt.Printf("# t %.03f, V0 %.03f, Mass %.03f\n", t, V0, M)
 	fmt.Printf("# t\tVx\tVy\tx\ty\tm\n")
 
-	for ; M >= 25652. && (V-V0) < 2721.3; t += dt {
+	for ; M >= 25652. && (V0-V) < 2721.340; t += dt {
 
 		r2 := X*X + Y*Y
 		r = math.Sqrt(r2)
@@ -188,7 +188,7 @@ func main() {
 	}
 
 	fmt.Printf("# end non-impulsive circularization maneuver\n")
-	fmt.Printf("# t %.03f, V0 %.03f, Mass %.03f\n", t, V0, M)
+	fmt.Printf("# t %.03f, delta V0 %.03f, Mass %.03f\n", t, V-V0, M)
 	fmt.Printf("# begin circular orbit\n")
 	fmt.Printf("# t\tVx\tVy\tx\ty\tr\n")
 	for loopCounter := 0; t <= 882650.0; loopCounter, t = loopCounter+1, t+dt {
@@ -216,6 +216,5 @@ func main() {
 
 		X += Vx * dt
 		Y += Vy * dt
-
 	}
 }
