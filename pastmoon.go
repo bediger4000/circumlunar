@@ -85,7 +85,7 @@ func main() {
 	fmt.Printf("# t %.03f, V0 %.03f, Mass %.03f\n", t, V0, M)
 	fmt.Printf("# t\tVx\tVy\tx\ty\tvv/vis-viva\tm\n")
 
-	for ; (V - V0) < 2724.; t += dt {
+	for ; (V - V0) < 2721.3; t += dt {
 
 		r2 := X*X + Y*Y
 		r = math.Sqrt(r2)
@@ -122,12 +122,12 @@ func main() {
 	fmt.Printf("# t %.03f, V %.03f, Mass %.03f, delta V %.03f\n\n", t, V, M, V-V0)
 	fmt.Printf("# t\tVx\tVy\tx\ty\tr\n")
 
-	for loopCounter := 1; t <= 900000.0; t, loopCounter = t+dt, loopCounter+1 {
+	for loopCounter := 1; t <= 500000.0; t, loopCounter = t+dt, loopCounter+1 {
 
 		r2 := X*X + Y*Y
+		r = math.Sqrt(r2)
 
-		if (loopCounter % 20) == 1 {
-			r = math.Sqrt(r2)
+		if (loopCounter % 200) == 1 {
 			fmt.Printf("%f\t%f\t%f\t%f\t%f\t%f\n", t, Vx, Vy, X, Y, r)
 		}
 
