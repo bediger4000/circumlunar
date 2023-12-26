@@ -1,0 +1,21 @@
+set xtics out rotate by -90
+set ytics out
+set style line 1  linecolor rgb '#0000ff' 
+set style line 2  linecolor rgb '#00ff00' 
+# show orbit out to moon
+set xrange [-4e8:1.5e7]
+set yrange [-6.e7:6e7]
+# show orbit closer to earth
+#set xrange [-2e7:2e7]
+#set yrange [-2.0e7:2.0e7]
+set xlabel "distance from earth's center, meters"
+set ylabel "distance from earth's center, meters"
+
+set term png
+set term png size 1280,440
+set out "circularize.png"
+
+plot 'earth.outline' with lines title "Earth" linestyle 2, \
+'moon.outline' with lines title "Moon" linestyle 2, \
+'circularize.dat' using 4:5 with lines title "Orbit" linestyle 1
+
