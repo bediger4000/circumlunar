@@ -1,5 +1,13 @@
 package main
 
+/*
+ * Impulsive maneuver no. 1:
+ * make 1, 1075 mi high circular orbit,
+ * undergo instantaneous 1000 m/s velocity change
+ * tangential to circular orbit, see if elliptical orbit
+ * gets out to where it should, and takes what time it should.
+ */
+
 import (
 	"fmt"
 	"math"

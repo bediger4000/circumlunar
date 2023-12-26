@@ -1,5 +1,13 @@
 package main
 
+/*
+ * Numeric integration of von Braun's lunar excursion.
+ * Make 1, 1075 mi circular orbit,
+ * make a burn to add 2721.3 m/s (integrating accelerameters)
+ * wait 10 or so days, make a burn to subtract 2721.3 m/s
+ * to return to circular, 1075 mi high orbit.
+ */
+
 import (
 	"fmt"
 	"math"

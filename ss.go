@@ -1,5 +1,9 @@
 package main
 
+/*
+ * Wernher von Braun's 1075 mile polar orbit
+ */
+
 import (
 	"fmt"
 	"math"

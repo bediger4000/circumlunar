@@ -1,5 +1,13 @@
 package main
 
+/*
+ * Non-impulsive counterpart of 1 orbit + 1000 m/s delta V.
+ * Take one, 1075 mi orbit, make a burn to add 1000 m/s to
+ * tangential velocity. I think it's justified to burn until
+ * velocity is correct because integrating accelerometers
+ * existed in early 1950s, or at least the principle was known.
+ */
+
 import (
 	"fmt"
 	"math"
@@ -32,6 +40,7 @@ func main() {
 	a2 := 2.0 * a
 	GMa := GM1 / a
 
+	// The impulsive counterpart made delta V at 7258. seconds.
 	fmt.Printf("# t\tVx\tVy\tx\ty\tr\n")
 	for t = 0.0; t <= 7500.000000; t += dt {
 

@@ -1,5 +1,12 @@
 package main
 
+/*
+ * Make 1, 1075 mi high, circular orbit, do a 2721.3 m/s velocity change,
+ * integrate the orbit about out to the moon's orbit
+ * This burn starts at 7470. sec, where 1, 1075 mi high orbit is 7258 seconds.
+ * This keeps apogee on the X-axis of this simulation.
+ */
+
 import (
 	"fmt"
 	"math"
@@ -33,7 +40,7 @@ func main() {
 	GMa := GM1 / a
 
 	fmt.Printf("# t\tVx\tVy\tx\ty\tr\n")
-	// for t = 0.0; t <= 7500.000000; t += dt {
+	// 7258 sec is when the circular orbit passes the X-axis in this simulation.
 	for t = 0.0; t <= 7470.000000; t += dt {
 
 		r2 := X*X + Y*Y

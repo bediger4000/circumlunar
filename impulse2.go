@@ -1,5 +1,14 @@
 package main
 
+/*
+ * Hohmann Transfer orbit simulation
+ * 1, 1075 mi high circular orbit,
+ * impulsive 1000 m/s velocity change,
+ * second impulsive velocity change to 5114.5 m/s
+ * to raise perigee to circular orbit.
+ * At least 1 orbit at new altitude.
+ */
+
 import (
 	"fmt"
 	"math"
@@ -108,7 +117,7 @@ func main() {
 	fmt.Println("\n# end transfer orbit")
 	fmt.Println("# impulsive velocity change to get to 5114.5 m/s")
 	fmt.Printf("# t\tVx\tVy\tx\ty\tvv/vis-viva\n")
-	Vy = -5114.5 // impulsive delta-V of something
+	Vy = -5114.5 // impulsive delta-V changes Vy
 
 	for ; t <= 32000; t += dt {
 

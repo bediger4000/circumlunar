@@ -1,5 +1,9 @@
 package main
 
+/*
+ * Integrate Rocket Equation for Apollo Command/Service Module
+ */
+
 import (
 	"fmt"
 	"math"
@@ -35,16 +39,12 @@ func main() {
 	fmt.Printf("# t\tMass\tX\tV\n")
 	for t = 0.0; t <= 30.0; t += dt {
 		fmt.Printf("%.03f\t%f\t%f\t%f\n", t, M, X, V)
-		// Mave := M - dM/2.0
-		// Mave := M
-		// M -= dM / 2. // average mass for time period
 		M -= dM
 		A := F / M
 		dV := dt * A
 		V += dV
 		dX := dt * V
 		X += dX
-		// M -= dM / 2.
 	}
 	fmt.Printf("%.03f\t%f\t%f\t%f\n", t, M, X, V)
 

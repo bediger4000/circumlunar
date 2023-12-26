@@ -1,5 +1,9 @@
 package main
 
+/*
+ * Draw earth's outline, center of earth at (0,0)
+ */
+
 import (
 	"fmt"
 	"math"

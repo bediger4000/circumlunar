@@ -1,5 +1,10 @@
 package main
 
+/*
+ * Hohmann Transfer orbit by 2, nonimpulsive (continuous burn) velocity
+ * changes, complete with mass change.
+ */
+
 import (
 	"fmt"
 	"log"
