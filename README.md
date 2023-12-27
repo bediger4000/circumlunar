@@ -111,43 +111,49 @@ out to the radius of the Moon's orbit.
 
 All of my numerical integrations work like this:
 
-// Start simulation where vehicle has some position (X,Y) relative<br/>
-// to center of the earth, and a vector velocity (V<sub>x</sub>,V<sub>y</sub>)<br/>
-// All motion constrained to plain of ecliptic, there are no Z components of anything.<br/>
-// I'm assuming a known, constant thrust and constant mass flow rate for the<br/>
-// rocket engines.<br/>
-for t := t0; t < t<sub>max</sub>; t += &#916;t {<br/>
-<br/>
-    // find distance from center of earth, which is at (0.0,0.0)<br/>
-    r = &radic;(X<sup>2</sup> + Y<sup>2</sup>)<br/>
-<br/>
-    // magnitude of attraction due to gravity<br/>
-    F<sub>grav</sub> = G M<sub>earth</sub>/(r<sup>2</sup>)<br/>
-<br/>
-    // X and Y direction components of gravitational forces<br/>
-    F<sub>x</sub> = (-X/r)F<sub>grav</sub><br/>
-    F<sub>y</sub> = (-Y/r)F<sub>grav</sub><br/>
-<br/>
-    // Vector components of thrust, assumed tangential to orbit<br/>
-    V = &radic;(V<sub>x</sub><sup>2</sup> + V<sub>y</sub><sup>2</sup>)<br/>
-    F<sub>x</sub> = Thrust V<sub>x</sub>/V<br/>
-    F<sub>y</sub> = Thrust V<sub>y</sub>/V<br/>
-<br/>
-    // Mass change for time step<br/>
-    M -=  &#916;M // constant mass flow rate, &#916;M does depend on time step<br/>
-<br/>
-    // Vector acceleration components<br/>
-    A<sub>x</sub = F<sub>x</sub>/M<br/>
-    A<sub>y</sub = F<sub>y</sub>/M<br/>
-<br/>
-    // Increment velocity components<br/>
-    V<sub>x</sub += A<sub>x</sub &#916;t<br/>
-    V<sub>y</sub += A<sub>y</sub &#916;t<br/>
-<br/>
-    // Increment position components<br/>
-    X += V<sub>x</sub &#916;t<br/>
-    Y += V<sub>y</sub &#916;t<br/>
-}<br/>
+Start simulation where vehicle has some position (X,Y) relative<br/>
+to center of the earth, and a vector velocity (V<sub>x</sub>,V<sub>y</sub>)<br/>
+All motion constrained to plain of ecliptic, there are no Z components of anything.<br/>
+I'm assuming a known, constant thrust and constant mass flow rate for the<br/>
+rocket engines.
+```
+for t := t0; t < tmax; t += Δt {
+
+    // find distance from center of earth, which is at (0.0,0.0)
+    r = √(X*X + Y*Y)
+
+    // magnitude of attraction due to gravity
+    Fgrav = G Mearth/(r*r)
+
+    // X and Y direction components of gravitational forces
+    Fx = (-X/r)Fgrav
+    Fy = (-Y/r)Fgrav
+
+    // Vector components of thrust, assumed tangential to orbit
+    V = &radic;(Vx*Vx + Vy*Vy)
+    Fx = Thrust Vx/V
+    Fy = Thrust Vy/V
+
+    // Mass change for time step
+    M -=  ΔM // constant mass flow rate, ΔM does depend on length of time step
+
+    // Vector acceleration components
+    Ax = Fx/M
+    Ay = Fy/M
+
+    // Increment velocity components
+    Vx += Ax Δt
+    Vy += Ay Δt
+
+    // Increment position components
+    X += Vx Δt
+    Y += Vy Δt
+ΔV
+
+Δt
+
+}
+```
 
 ## References
 
