@@ -111,45 +111,43 @@ out to the radius of the Moon's orbit.
 
 All of my numerical integrations work like this:
 
-```
-// Start simulation where vehicle has some position (X,Y) relative
-// to center of the earth, and a vector velocity (V<sub>x</sub>,V<sub>y</sub>)
-// All motion constrained to plain of ecliptic, there are no Z components of anything.
-// I'm assuming a known, constant thrust and constant mass flow rate for the
-// rocket engines.
-for t := t0; t < t<sub>max</sub>; t += &#916;t {
-
-    // find distance from center of earth, which is at (0.0,0.0)
-    r = &radic;(X<sup>2</sup> + Y<sup>2</sup>)
-
-    // magnitude of attraction due to gravity
-    F<sub>grav</sub> = G M<sub>earth</sub>/(r<sup>2</sup>)
-
-    // X and Y direction components of gravitational forces
-    F<sub>x</sub> = (-X/r)F<sub>grav</sub>
-    F<sub>y</sub> = (-Y/r)F<sub>grav</sub>
-
-    // Vector components of thrust, assumed tangential to orbit
-    V = &radic;(V<sub>x</sub><sup>2</sup> + V<sub>y</sub><sup>2</sup>)
-    F<sub>x</sub> = Thrust V<sub>x</sub>/V
-    F<sub>y</sub> = Thrust V<sub>y</sub>/V
-
-    // Mass change for time step
-    M -=  &#916;M // constant mass flow rate, &#916;M does depend on time step
-
-    // Vector acceleration components
-    A<sub>x</sub = F<sub>x</sub>/M
-    A<sub>y</sub = F<sub>y</sub>/M
-
-    // Increment velocity components
-    V<sub>x</sub += A<sub>x</sub &#916;t
-    V<sub>y</sub += A<sub>y</sub &#916;t
-
-    // Increment position components
-    X += V<sub>x</sub &#916;t
-    Y += V<sub>y</sub &#916;t
-}
-```
+>// Start simulation where vehicle has some position (X,Y) relative
+>// to center of the earth, and a vector velocity (V<sub>x</sub>,V<sub>y</sub>)
+>// All motion constrained to plain of ecliptic, there are no Z components of anything.
+>// I'm assuming a known, constant thrust and constant mass flow rate for the
+>// rocket engines.
+>for t := t0; t < t<sub>max</sub>; t += &#916;t {
+>
+>    // find distance from center of earth, which is at (0.0,0.0)
+>    r = &radic;(X<sup>2</sup> + Y<sup>2</sup>)
+>
+>    // magnitude of attraction due to gravity
+>    F<sub>grav</sub> = G M<sub>earth</sub>/(r<sup>2</sup>)
+>
+>    // X and Y direction components of gravitational forces
+>    F<sub>x</sub> = (-X/r)F<sub>grav</sub>
+>    F<sub>y</sub> = (-Y/r)F<sub>grav</sub>
+>
+>    // Vector components of thrust, assumed tangential to orbit
+>    V = &radic;(V<sub>x</sub><sup>2</sup> + V<sub>y</sub><sup>2</sup>)
+>    F<sub>x</sub> = Thrust V<sub>x</sub>/V
+>    F<sub>y</sub> = Thrust V<sub>y</sub>/V
+>
+>    // Mass change for time step
+>    M -=  &#916;M // constant mass flow rate, &#916;M does depend on time step
+>
+>    // Vector acceleration components
+>    A<sub>x</sub = F<sub>x</sub>/M
+>    A<sub>y</sub = F<sub>y</sub>/M
+>
+>    // Increment velocity components
+>    V<sub>x</sub += A<sub>x</sub &#916;t
+>    V<sub>y</sub += A<sub>y</sub &#916;t
+>
+>    // Increment position components
+>    X += V<sub>x</sub &#916;t
+>    Y += V<sub>y</sub &#916;t
+>}
 
 ## References
 
