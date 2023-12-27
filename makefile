@@ -1,10 +1,10 @@
 all: spacestation_orbit.png impulsive_orbit.png nonimpulsive_orbit.png \
-	orbits_overlay.png circularize.png \
-	impulsive2.dat nonimpulsive2.dat pastmoon.dat
+	orbits_overlay.png circularize.png hohmann_overlay.png
 
 clean:
 	-rm -rf spacestation_orbit.png impulsive_orbit.png \
 		nonimpulsive_orbit.png orbits_overlay.png circularize.png \
+		hohmann_overlay.png \
 		earth.outline moon.outline \
 		impulsive1.dat impulsive2.dat circularize.dat \
 		nonimpulsive1.dat nonimpulsive2.dat \
@@ -76,3 +76,6 @@ orbits_overlay.png: earth.outline nonimpulsive1.dat impulsive1.dat overlay.load
 
 circularize.png: circularize.dat circularize.load moon.outline earth.outline
 	gnuplot < circularize.load
+
+hohmann_overlay.png: overlay2.load earth.outline impulsive2.dat nonimpulsive2.dat
+	gnuplot < overlay2.load
