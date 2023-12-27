@@ -5,10 +5,10 @@ set ylabel "distance from earth's center, meters"
 set style line 1  linecolor rgb '#ff0000'
 set style line 2  linecolor rgb '#00ff00'
 
-#set term png
-#set size square
-#set term png size 1280,1280
-#set out "impulsive_orbit.png"
+set term png
+set size square
+set term png size 1280,1280
+set out "hohmann_overlay.png"
 set xrange [-2e7:2e7]
 set yrange [-2.0e7:2.0e7]
 plot 'earth.outline' with lines title "Earth", \
