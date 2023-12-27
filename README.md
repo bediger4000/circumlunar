@@ -125,17 +125,20 @@ for t := t0; t < tmax; t += Δt {
     // magnitude of attraction due to gravity
     Fgrav = G Mearth/(r*r)
 
-    // X and Y direction components of gravitational forces
+    // X and Y direction components
+    // of gravitational forces
     Fx = (-X/r)Fgrav
     Fy = (-Y/r)Fgrav
 
-    // Vector components of thrust, assumed tangential to orbit
-    V = &radic;(Vx*Vx + Vy*Vy)
+    // Vector components of thrust
+    // assumed tangential to orbit
+    V = √(Vx*Vx + Vy*Vy)
     Fx = Thrust Vx/V
     Fy = Thrust Vy/V
 
+   // constant mass flow rate, ΔM does depend on length of time step
     // Mass change for time step
-    M -=  ΔM // constant mass flow rate, ΔM does depend on length of time step
+    M -=  ΔM
 
     // Vector acceleration components
     Ax = Fx/M
@@ -148,10 +151,6 @@ for t := t0; t < tmax; t += Δt {
     // Increment position components
     X += Vx Δt
     Y += Vy Δt
-ΔV
-
-Δt
-
 }
 ```
 
