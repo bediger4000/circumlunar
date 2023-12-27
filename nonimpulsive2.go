@@ -7,9 +7,7 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"math"
-	"os"
 )
 
 func main() {
@@ -203,19 +201,12 @@ func main() {
 	fmt.Printf("# begin outer circular obit\n")
 	fmt.Printf("# t\tVx\tVy\tx\ty\tr\n")
 
-	outer, err := os.Create("outer.dat")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer outer.Close()
-
 	for ; t <= 32000; t += dt {
 
 		r2 := X*X + Y*Y
 		r = math.Sqrt(r2)
 
 		fmt.Printf("%f\t%f\t%f\t%f\t%f\t%f\n", t, Vx, Vy, X, Y, r)
-		fmt.Fprintf(outer, "%f\t%f\t%f\t%f\t%f\t%f\n", t, Vx, Vy, X, Y, r)
 
 		// magnitude of attraction F = G*M1/(r^2)
 		Fmag := GM1 / r2
