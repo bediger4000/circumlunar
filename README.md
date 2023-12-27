@@ -61,6 +61,10 @@ and a vehicle dry mass of 25652 kg.
 
 ![orbit diagram](circum_lunar_orbit.png)
 
+This is the orbit as presented in _Across the Space Frontier_.
+It's a bit confusing since it presents the vehicle's trans-lunar orbit
+in the same plane as the space station's orbit and the moon's orbit.
+
 ## A Program for Verifying the Orbit
 
 In accordance with [Gall's Law](http://principles-wiki.net/principles:gall_s_law),
@@ -102,20 +106,39 @@ causes the vehicle to change to an elliptic orbit.
 Use the same 1000 meter/sec &#916;V as in (3).
 5. Try numeric integration of a [Hohmann transfer orbit]() works.
 This requires two impulsive velocity changes.
+   * Simulated an [impulsive](impulse2.go) and a [nonimpulsive](nonimpulsive2.go) two-burn solution.
 6. See if a "barely 2 minute" continuous thrust and concomitant mass change
 numerically integrates to a big ellipse that takes the vehicle
 out to the radius of the Moon's orbit.
 7. Try to put a 3rd body, the Moon, into the simulation of (5).
 
+![elliptical trans-lunar orbit](translunar_orbit.png)
+
+Above is an approximately to-scale 1075 mile orbit,
+followed by a nonimpulsive (continuous thrust and mass change) burn
+to increase velocity by 2721.34 meters/sec.
+The burn ends up lasting 172.25 seconds, which is more like three minutes than
+"scarcely two".
+The burn also starts 212.250 seconds after the impulsive version happens,
+so as to align apogee with the X-axis of the plot.
+
+After coasting for 10.04 days, simulate a second, nonimpulsive burn to circularize
+the highly elliptical trans-lunar orbit back to 1075 mile high space station orbit.
+
+There are to-scale earth and moon sized circles in the diagram.
+The moon-sized circle is to visually evaluate if the ellipse gets out to where
+the moon would be - no lunar gravity included in that simulation.
+
 ## Symplectic Euler Method
 
 All of my numerical integrations work like this:
 
-Start simulation where vehicle has some position (X,Y) relative<br/>
-to center of the earth, and a vector velocity (V<sub>x</sub>,V<sub>y</sub>)<br/>
-All motion constrained to plain of ecliptic, there are no Z components of anything.<br/>
-I'm assuming a known, constant thrust and constant mass flow rate for the<br/>
+Start simulation where vehicle has some position (X,Y) relative
+to center of the earth, and a vector velocity (V<sub>x</sub>,V<sub>y</sub>)
+All motion constrained to plain of ecliptic, there are no Z components of anything.
+I'm assuming a known, constant thrust and constant mass flow rate for the
 rocket engines.
+
 ```
 for t := t0; t < tmax; t += Δt {
 
@@ -136,7 +159,7 @@ for t := t0; t < tmax; t += Δt {
     Fx = Thrust Vx/V
     Fy = Thrust Vy/V
 
-   // constant mass flow rate, ΔM does depend on length of time step
+    // constant mass flow, so ΔM does depend on length of time step
     // Mass change for time step
     M -=  ΔM
 
