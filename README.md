@@ -104,21 +104,25 @@ causes the vehicle to change to an elliptic orbit.
 determine if **F** = m **A** integration of earth's gravity
 causes the vehicle to change to an elliptic orbit.
 Use the same 1000 meter/sec &#916;V as in (3).
-5. Try numeric integration of a [Hohmann transfer orbit]() works.
+   * Simulated an [impulsive](impulse1.go) and a [nonimpulsive](nonimpulsive1.go) 1000 meter/second velocity change.
+     Had to tinker with the timing of the nonimpulsive burn to get the two orbits to overlap.
+5. Try numeric integration of a [Hohmann transfer orbit]().
 This requires two impulsive velocity changes.
    * Simulated an [impulsive](impulse2.go) and a [nonimpulsive](nonimpulsive2.go) two-burn solution.
 6. See if a "barely 2 minute" continuous thrust and concomitant mass change
 numerically integrates to a big ellipse that takes the vehicle
 out to the radius of the Moon's orbit.
+   * Got that [simulated](circularize.go). The vehicle pretty much drains its
+     propellant tanks to circularize back to the 1075 mile high space station orbit.
 7. Try to put a 3rd body, the Moon, into the simulation of (5).
 
 ![elliptical trans-lunar orbit](translunar_orbit.png)
 
-Above is an approximately to-scale 1075 mile orbit,
-followed by a nonimpulsive (continuous thrust and mass change) burn
+Above is a simulation of an approximately to-scale 1075 mile orbit,
+followed by a simulated, nonimpulsive (continuous thrust and mass change) burn
 to increase velocity by 2721.34 meters/sec.
-The burn ends up lasting 172.25 seconds, which is more like three minutes than
-"scarcely two".
+The burn ends up lasting 172.25 seconds,
+which is much more like three minutes than "scarcely two".
 The burn also starts 212.250 seconds after the impulsive version happens,
 so as to align apogee with the X-axis of the plot.
 
@@ -126,8 +130,31 @@ After coasting for 10.04 days, simulate a second, nonimpulsive burn to circulari
 the highly elliptical trans-lunar orbit back to 1075 mile high space station orbit.
 
 There are to-scale earth and moon sized circles in the diagram.
-The moon-sized circle is to visually evaluate if the ellipse gets out to where
-the moon would be - no lunar gravity included in that simulation.
+The moon-sized circle is to visually evaluate if the vehicle gets out to where
+the moon would be - I included no lunar gravity in the simulation.
+
+I believe this makes the case that the vehicle von Braun outlined could
+make it out to the moon and back.
+Except I simulated an orbit confined to the ecliptic.
+Von Braun had the vehicle leaving from a space station in a (nearly) polar orbit.
+
+## Building and Running the Simulations
+
+After cloning this repo, you should be able to do something like this:
+
+```
+$ make build
+... view all the generated PNG files
+$ make clean
+```
+
+PNG file `orbits_overlay.png` overlays my impulsive and nonimpulsive 1000 m/s
+velocity changes.
+PNG file `hohmann_overlay.png` overlays  impulsive and nonimpulsive 1000 m/s
+velocity changes, followed by circularizing to a higher altitude orbit.
+I tinkered with timing of the nonimpulsive burns relative to the impulsive
+velocity changes to get the pairs of simulations to overlay closely.
+I couldn't find any orbital mechanics heuristics to help me with the tinkering.
 
 ## Symplectic Euler Method
 
