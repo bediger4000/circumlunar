@@ -114,7 +114,11 @@ numerically integrates to a big ellipse that takes the vehicle
 out to the radius of the Moon's orbit.
    * Got that [simulated](circularize.go). The vehicle pretty much drains its
      propellant tanks to circularize back to the 1075 mile high space station orbit.
+     It also takes a 172 second burn to get into the trans-lunar orbit.
 7. Try to put a 3rd body, the Moon, into the simulation of (5).
+   * I did not do this due to the confusing orbit diagram.
+     I think the moon's orbit is perpendicular to the vehicle's orbit,
+     but nothing in the book says that.
 
 ![elliptical trans-lunar orbit](translunar_orbit.png)
 
