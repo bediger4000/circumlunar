@@ -106,7 +106,7 @@ causes the vehicle to change to an elliptic orbit.
 Use the same 1000 meter/sec &#916;V as in (3).
    * Simulated an [impulsive](impulse1.go) and a [nonimpulsive](nonimpulsive1.go) 1000 meter/second velocity change.
      Had to tinker with the timing of the nonimpulsive burn to get the two orbits to overlap.
-5. Try numeric integration of a [Hohmann transfer orbit]().
+5. Try numeric integration of a [Hohmann transfer orbit](https://en.wikipedia.org/wiki/Hohmann_transfer_orbit).
 This requires two impulsive velocity changes.
    * Simulated an [impulsive](impulse2.go) and a [nonimpulsive](nonimpulsive2.go) two-burn solution.
 6. See if a "barely 2 minute" continuous thrust and concomitant mass change
@@ -203,6 +203,18 @@ for t := t0; t < tmax; t += Δt {
     Y += Vy Δt
 }
 ```
+Ultimately, the numerical integration results from observing that
+Newton's Second law is actually `F = d(Mv)dt`.
+Since a rocket gets thrust from throwing mass away at high velocity,
+the `Mv` term doesn't simplify to `M dv/dt` or `MA`.
+Considering the effects of gravity further complicates things.
+
+I could not find any intermediate expositions on this,
+or any intermediate software,
+only impulsive manuever equations,
+calculus-heavy [NASA documents](https://ntrs.nasa.gov/citations/19630011221)
+from the 1960s,
+and advanced orbital mechanics software like [42](https://github.com/ericstoneking/42).
 
 ## References
 
